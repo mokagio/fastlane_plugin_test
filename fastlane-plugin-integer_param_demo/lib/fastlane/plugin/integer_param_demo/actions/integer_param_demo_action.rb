@@ -5,7 +5,7 @@ module Fastlane
   module Actions
     class IntegerParamDemoAction < Action
       def self.run(params)
-        UI.message("The integer_param_demo plugin is working!")
+        UI.message("int config parameter = #{params[:int_param]}")
       end
 
       def self.description
@@ -27,11 +27,13 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "INTEGER_PARAM_DEMO_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+          FastlaneCore::ConfigItem.new(
+            key: :int_param,
+            env_name: "INTEGER_PARAM_DEMO_YOUR_OPTION",
+            description: "A non optional Integer parameter",
+            optional: false,
+            type: Integer
+          )
         ]
       end
 
